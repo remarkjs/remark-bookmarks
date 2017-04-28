@@ -1,6 +1,6 @@
 {
   "name": "remark-bookmarks",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "A link manager for Markdown files.",
   "main": "dist/index.js",
   "files": [
