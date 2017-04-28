@@ -100,10 +100,8 @@ transform the references into inline links.
 Thanks goes to these wonderful people ([emoji key][18]):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-
-\| [<img src="https://avatars2.githubusercontent.com/u/1282980?v=3" width="100px;"/><br /><sub>Ben Briggs</sub>][19]<br />[💻][20] [📖][21] [⚠️][22] \|
-\| :---: \|
-
+| [<img src="https://avatars2.githubusercontent.com/u/1282980?v=3" width="100px;"/><br /><sub>Ben Briggs</sub>](http://beneb.info)<br />[💻](https://github.com/ben-eb/remark-bookmarks/commits?author=ben-eb "Code") [📖](https://github.com/ben-eb/remark-bookmarks/commits?author=ben-eb "Documentation") [⚠️](https://github.com/ben-eb/remark-bookmarks/commits?author=ben-eb "Tests") |
+| :---: |
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors][23] specification.
