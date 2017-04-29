@@ -20,7 +20,6 @@
     ],
     "*.md": [
       "remark *.md -o --quiet",
-      "all-contributors generate",
       "git add"
     ]
   },
