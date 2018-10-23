@@ -76,17 +76,27 @@ over anything defined globally.
 
 ## Related
 
+*   [`remark-inline-links`][10]
+    — Transform references and definitions into normal links and images
+*   [`remark-defsplit`][11]
+    — Transform links and images into references and definitions with
+    URI-based identifiers
+*   [`remark-reference-links`][12]
+    — Transform links and images into references and definitions
+*   [`remark-unlink`][13]
+    — Remove all links, references and definitions
+
 ## Contribute
 
-See [`contributing.md` in `remarkjs/remark`][11] for ways to get
+See [`contributing.md` in `remarkjs/remark`][14] for ways to get
 started.
 
-This organisation has a [Code of Conduct][12].  By interacting with this
+This organisation has a [Code of Conduct][15].  By interacting with this
 repository, organisation, or community you agree to abide by its terms.
 
 ## License
 
-[MIT][13] © [Ben Briggs][14]
+[MIT][16] © [Ben Briggs][17]
 
 [1]: https://travis-ci.org/remarkjs/remark-bookmarks
 
@@ -108,10 +118,16 @@ repository, organisation, or community you agree to abide by its terms.
 
 [10]: https://github.com/remarkjs/remark-inline-links
 
-[11]: https://github.com/remarkjs/remark/blob/master/contributing.md
+[11]: https://github.com/remarkjs/remark-defsplit
 
-[12]: https://github.com/remarkjs/remark/blob/master/code-of-conduct.md
+[12]: https://github.com/remarkjs/remark-reference-links
 
-[13]: license
+[13]: https://github.com/remarkjs/remark-unlink
 
-[14]: http://beneb.info
+[14]: https://github.com/remarkjs/remark/blob/master/contributing.md
+
+[15]: https://github.com/remarkjs/remark/blob/master/code-of-conduct.md
+
+[16]: license
+
+[17]: http://beneb.info

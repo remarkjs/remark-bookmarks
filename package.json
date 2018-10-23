@@ -43,7 +43,7 @@
     "remark-inline-links": "^3.0.3",
     "remark-license": "^5.0.0",
     "remark-preset-wooorm": "^4.0.0",
-    "remark-reference-links": "^4.0.0",
+    "remark-reference-links": "^4.0.2",
     "remark-toc": "^5.0.0",
     "remark-usage": "^6.1.2",
     "xo": "^0.23.0"
@@ -95,18 +95,6 @@
         false
       ],
       "usage",
-      [
-        ".",
-        {
-          "bookmarks": {
-            "npm": "https://npmjs.com/package/remark-bookmarks",
-            "remark": "https://github.com/wooorm/remark",
-            "remarkInlineLinks": "https://github.com/wooorm/remark-inline-links",
-            "remarkLicense": "https://github.com/wooorm/remark-license",
-            "remarkReferenceLinks": "https://github.com/wooorm/remark-reference-links"
-          }
-        }
-      ],
       "inline-links",
       "license",
       "reference-links"
