@@ -2,14 +2,54 @@
   "name": "remark-bookmarks",
   "version": "1.0.0",
   "description": "A link manager for Markdown files.",
+  "license": "MIT",
+  "keywords": [
+    "global",
+    "links",
+    "markdown",
+    "remark"
+  ],
+  "repository": "remarkjs/remark-bookmarks",
+  "bugs": "https://github.com/remarkjs/remark-bookmarks/issues",
+  "author": "Ben Briggs <beneb.info@gmail.com> (http://beneb.info)",
+  "contributors": [
+    "Ben Briggs <beneb.info@gmail.com> (http://beneb.info)",
+    "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)"
+  ],
   "main": "dist/index.js",
+  "module": "src/index.js",
   "files": [
     "dist",
-    "license"
+    "license",
+    "src"
   ],
+  "dependencies": {
+    "unist-util-remove": "^1.0.0",
+    "unist-util-visit": "^1.1.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/register": "^7.0.0",
+    "all-contributors-cli": "^5.0.0",
+    "ava": "1.0.0-rc.1",
+    "babel-plugin-add-module-exports": "^1.0.0",
+    "nyc": "^13.1.0",
+    "prettier": "^1.14.3",
+    "remark": "^10.0.0",
+    "remark-cli": "^6.0.0",
+    "remark-heading-gap": "^3.0.0",
+    "remark-inline-links": "^3.0.3",
+    "remark-license": "^5.0.0",
+    "remark-reference-links": "^4.0.0",
+    "remark-toc": "^5.0.0",
+    "remark-usage": "^6.1.2",
+    "xo": "^0.23.0"
+  },
   "scripts": {
-    "format": "remark . -qfo && prettier \"**/*.js\" --write && xo --fix",
     "prepublishOnly": "npm run build",
+    "format": "remark *.md -qfo && prettier \"**/*.js\" --write && xo --fix",
     "build": "babel src --out-dir dist --ignore src/**/*.test.js",
     "test-api": "ava",
     "test-coverage": "nyc --reporter lcov ava",
@@ -35,41 +75,6 @@
       "@babel/register"
     ]
   },
-  "keywords": [
-    "global",
-    "links",
-    "markdown",
-    "remark"
-  ],
-  "author": {
-    "name": "Ben Briggs",
-    "email": "beneb.info@gmail.com",
-    "url": "http://beneb.info"
-  },
-  "license": "MIT",
-  "engines": {
-    "node": ">=4"
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.1.2",
-    "@babel/core": "^7.1.2",
-    "@babel/preset-env": "^7.1.0",
-    "@babel/register": "^7.0.0",
-    "all-contributors-cli": "^5.0.0",
-    "ava": "1.0.0-rc.1",
-    "babel-plugin-add-module-exports": "^1.0.0",
-    "nyc": "^13.1.0",
-    "prettier": "^1.14.3",
-    "remark": "^10.0.0",
-    "remark-cli": "^6.0.0",
-    "remark-heading-gap": "^3.0.0",
-    "remark-inline-links": "^3.0.3",
-    "remark-license": "^5.0.0",
-    "remark-reference-links": "^4.0.0",
-    "remark-toc": "^5.0.0",
-    "remark-usage": "^6.1.1",
-    "xo": "^0.23.0"
-  },
   "prettier": {
     "tabWidth": 2,
     "useTabs": false,
@@ -80,10 +85,6 @@
   },
   "xo": {
     "prettier": true
-  },
-  "dependencies": {
-    "unist-util-remove": "^1.0.0",
-    "unist-util-visit": "^1.1.1"
   },
   "remarkConfig": {
     "plugins": [
