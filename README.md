@@ -6,17 +6,12 @@
 ## Table of Contents
 
 * [Install][8]
-
 * [Usage][9]
-
 * [API][10]
 
   * [remark().use(remarkBookmarks, options)][11]
-
 * [Tips][12]
-
 * [Contributors][13]
-
 * [License][14]
 
 
@@ -39,17 +34,25 @@ Given the following markdown:
 remark-bookmarks is on [npm]!
 ```
 
+And we require dependencies:
+
+```javascript
+const remark = require('remark')
+const remarkBookmarks = require('remark-bookmarks')
+```
+
 We can call remark-bookmarks to provide the missing reference:
 
 ```javascript
-const remark = require('remark');
-const remarkBookmarks = require('remark-bookmarks');
-const bookmarks = {
-    github: 'https://github.com/ben-eb/remark-bookmarks',
-    npm: 'https://npmjs.com/package/remark-bookmarks',
-};
-const processor = remark().use(remarkBookmarks, {bookmarks});
-const output = processor.processSync('remark-bookmarks is on [npm]!');
+const output = remark()
+  .use(remarkBookmarks, {
+    bookmarks: {
+      github: 'https://github.com/remarkjs/remark-bookmarks',
+      npm: 'https://npmjs.com/package/remark-bookmarks'
+    }
+  })
+  .processSync('remark-bookmarks is on [npm]!')
+  .toString()
 ```
 
 The output of this transform is below. Note that only the npm link is inserted into this document, to avoid unnecessary references.
@@ -112,7 +115,7 @@ Contributions of any kind are welcome!
 
 ## License
 
-MIT © [Ben Briggs][24]
+[MIT][24] © [Ben Briggs][19]
 
 [1]: https://github.com/wooorm/remark
 
@@ -152,8 +155,6 @@ MIT © [Ben Briggs][24]
 
 [19]: http://beneb.info
 
-[24]: http://beneb.info
-
 [20]: https://github.com/ben-eb/remark-bookmarks/commits?author=ben-eb "Code"
 
 [21]: https://github.com/ben-eb/remark-bookmarks/commits?author=ben-eb "Documentation"
@@ -161,3 +162,5 @@ MIT © [Ben Briggs][24]
 [22]: https://github.com/ben-eb/remark-bookmarks/commits?author=ben-eb "Tests"
 
 [23]: https://github.com/kentcdodds/all-contributors
+
+[24]: http://www.opensource.org/licenses/MIT

@@ -8,19 +8,31 @@
     "LICENSE-MIT"
   ],
   "scripts": {
-    "prepublish": "cross-env BABEL_ENV=publish babel src --out-dir dist --ignore *.test.js",
-    "precommit": "lint-staged",
-    "report": "nyc report --reporter=html",
-    "test": "xo && nyc ava"
+    "format": "remark . -qfo && prettier \"**/*.js\" --write && xo --fix",
+    "prepublishOnly": "npm run build",
+    "build": "babel src --out-dir dist --ignore src/**/*.test.js",
+    "test-api": "ava",
+    "test-coverage": "nyc --reporter lcov ava",
+    "test": "npm run format && npm run build && npm run test-coverage"
   },
-  "lint-staged": {
-    "*.js": [
-      "prettier --write --tab-width=4 --single-quote --no-bracket-spacing --trailing-comma=es5",
-      "git add"
+  "browserslist": "> 2.5%, node 6",
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
     ],
-    "*.md": [
-      "remark *.md -o --quiet",
-      "git add"
+    "plugins": [
+      "add-module-exports"
+    ]
+  },
+  "nyc": {
+    "check-coverage": true,
+    "lines": 100,
+    "functions": 100,
+    "branches": 100
+  },
+  "ava": {
+    "require": [
+      "@babel/register"
     ]
   },
   "keywords": [
@@ -39,78 +51,66 @@
     "node": ">=4"
   },
   "devDependencies": {
-    "all-contributors-cli": "^4.3.0",
-    "ava": "^0.19.1",
-    "babel-cli": "^6.0.0",
-    "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-preset-env": "^1.4.0",
-    "babel-register": "^6.24.1",
-    "cross-env": "^4.0.0",
-    "husky": "^0.13.3",
-    "lint-staged": "^3.4.0",
-    "nyc": "^10.2.0",
-    "prettier": "^1.2.2",
-    "remark": "^7.0.0",
-    "remark-cli": "^3.0.0",
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/register": "^7.0.0",
+    "all-contributors-cli": "^5.0.0",
+    "ava": "1.0.0-rc.1",
+    "babel-plugin-add-module-exports": "^1.0.0",
+    "nyc": "^13.1.0",
+    "prettier": "^1.14.3",
+    "remark": "^10.0.0",
+    "remark-cli": "^6.0.0",
     "remark-heading-gap": "^3.0.0",
     "remark-inline-links": "^3.0.3",
-    "remark-license": "^4.0.0",
-    "remark-reference-links": "^3.0.4",
-    "remark-toc": "^4.0.0",
-    "remark-usage": "^5.0.0",
-    "xo": "^0.18.1"
+    "remark-license": "^5.0.0",
+    "remark-reference-links": "^4.0.0",
+    "remark-toc": "^5.0.0",
+    "remark-usage": "^6.1.1",
+    "xo": "^0.23.0"
   },
-  "babel": {
-    "presets": [
-      [
-        "env",
-        {
-          "targets": {
-            "node": 4
-          }
-        }
-      ]
-    ],
-    "plugins": [
-      "add-module-exports"
-    ]
+  "prettier": {
+    "tabWidth": 2,
+    "useTabs": false,
+    "singleQuote": true,
+    "bracketSpacing": false,
+    "semi": false,
+    "trailingComma": "none"
   },
   "xo": {
-    "space": 4,
-    "rules": {
-      "comma-dangle": [
-        0
-      ]
-    }
-  },
-  "ava": {
-    "require": "babel-register"
+    "prettier": true
   },
   "dependencies": {
-    "unist-builder": "^1.0.2",
-    "unist-util-remove": "^0.2.1",
+    "unist-util-remove": "^1.0.0",
     "unist-util-visit": "^1.1.1"
   },
   "remarkConfig": {
-    "plugins": {
-      "./dist/index.js": {
-        "bookmarks": {
-          "npm": "https://npmjs.com/package/remark-bookmarks",
-          "remark": "https://github.com/wooorm/remark",
-          "remarkInlineLinks": "https://github.com/wooorm/remark-inline-links",
-          "remarkLicense": "https://github.com/wooorm/remark-license",
-          "remarkReferenceLinks": "https://github.com/wooorm/remark-reference-links"
+    "plugins": [
+      [
+        ".",
+        {
+          "bookmarks": {
+            "npm": "https://npmjs.com/package/remark-bookmarks",
+            "remark": "https://github.com/wooorm/remark",
+            "remarkInlineLinks": "https://github.com/wooorm/remark-inline-links",
+            "remarkLicense": "https://github.com/wooorm/remark-license",
+            "remarkReferenceLinks": "https://github.com/wooorm/remark-reference-links"
+          }
         }
-      },
-      "remark-toc": {
-        "maxDepth": 3
-      },
-      "remark-usage": {},
-      "remark-inline-links": {},
-      "remark-license": {},
-      "remark-heading-gap": {},
-      "remark-reference-links": {}
-    },
+      ],
+      [
+        "toc",
+        {
+          "maxDepth": 3
+        }
+      ],
+      "usage",
+      "inline-links",
+      "license",
+      "heading-gap",
+      "reference-links"
+    ],
     "settings": {
       "bullet": "*",
       "fences": true,

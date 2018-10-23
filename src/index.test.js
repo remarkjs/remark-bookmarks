@@ -1,74 +1,85 @@
-import test from 'ava';
-import remark from 'remark';
-import bookmarks from './';
+import test from 'ava'
+import remark from 'remark'
+import bookmarks from '.'
 
 function equal(t, fixture, expected, options) {
-    const output = remark().use(bookmarks, options).processSync(fixture);
-    t.deepEqual(expected, output.contents);
+  const output = remark()
+    .use(bookmarks, options)
+    .processSync(fixture)
+  t.deepEqual(expected, output.contents)
 }
 
-test(equal, '[pass through]\n', '[pass through]\n');
-test(equal, '[pass through][]\n', '[pass through][]\n');
+test('#1', equal, '[pass through]\n', '[pass through]\n')
+test('#2', equal, '[pass through][]\n', '[pass through][]\n')
 
 test(
-    equal,
-    '[description][caseInsensitive]\n',
-    '[description][caseinsensitive]\n\n[caseinsensitive]: https://twitter.com/ben_eb\n',
-    {bookmarks: {caseInsensitive: `https://twitter.com/ben_eb`}}
-);
+  '#3',
+  equal,
+  '[description][caseInsensitive]\n',
+  '[description][caseInsensitive]\n\n[caseInsensitive]: https://twitter.com/ben_eb\n',
+  {bookmarks: {caseInsensitive: `https://twitter.com/ben_eb`}}
+)
 
 test(
-    equal,
-    '[twitter][]\n',
-    '[twitter][]\n\n[twitter]: https://twitter.com/ben_eb\n',
-    {bookmarks: {twitter: `https://twitter.com/ben_eb`}}
-);
+  '#4',
+  equal,
+  '[twitter][]\n',
+  '[twitter][]\n\n[twitter]: https://twitter.com/ben_eb\n',
+  {bookmarks: {twitter: `https://twitter.com/ben_eb`}}
+)
 
 test(
-    equal,
-    '[twitter]\n',
-    '[twitter]\n\n[twitter]: https://twitter.com/ben_eb\n',
-    {bookmarks: {twitter: `https://twitter.com/ben_eb`}}
-);
+  '#5',
+  equal,
+  '[twitter]\n',
+  '[twitter]\n\n[twitter]: https://twitter.com/ben_eb\n',
+  {bookmarks: {twitter: `https://twitter.com/ben_eb`}}
+)
 
 test(
-    equal,
-    '[twitter][twitter]\n',
-    '[twitter][twitter]\n\n[twitter]: https://twitter.com/ben_eb\n',
-    {bookmarks: {twitter: `https://twitter.com/ben_eb`}}
-);
+  '#6',
+  equal,
+  '[twitter][twitter]\n',
+  '[twitter][twitter]\n\n[twitter]: https://twitter.com/ben_eb\n',
+  {bookmarks: {twitter: `https://twitter.com/ben_eb`}}
+)
 
 test(
-    equal,
-    '[longer description][twitter]\n',
-    '[longer description][twitter]\n\n[twitter]: https://twitter.com/ben_eb\n',
-    {bookmarks: {twitter: `https://twitter.com/ben_eb`}}
-);
+  '#7',
+  equal,
+  '[longer description][twitter]\n',
+  '[longer description][twitter]\n\n[twitter]: https://twitter.com/ben_eb\n',
+  {bookmarks: {twitter: `https://twitter.com/ben_eb`}}
+)
 
 test(
-    equal,
-    '[already exists][twitter]\n\n[twitter]: https://twitter.com/wooorm\n',
-    '[already exists][twitter]\n\n[twitter]: https://twitter.com/wooorm\n',
-    {bookmarks: {twitter: `https://twitter.com/ben_eb`}}
-);
+  '#8',
+  equal,
+  '[already exists][twitter]\n\n[twitter]: https://twitter.com/wooorm\n',
+  '[already exists][twitter]\n\n[twitter]: https://twitter.com/wooorm\n',
+  {bookmarks: {twitter: `https://twitter.com/ben_eb`}}
+)
 
 test(
-    equal,
-    '[overwrite][twitter]\n\n[twitter]: https://twitter.com/wooorm\n',
-    '[overwrite][twitter]\n\n[twitter]: https://twitter.com/ben_eb\n',
-    {bookmarks: {twitter: `https://twitter.com/ben_eb`}, overwrite: true}
-);
+  '#9',
+  equal,
+  '[overwrite][twitter]\n\n[twitter]: https://twitter.com/wooorm\n',
+  '[overwrite][twitter]\n\n[twitter]: https://twitter.com/ben_eb\n',
+  {bookmarks: {twitter: `https://twitter.com/ben_eb`}, overwrite: true}
+)
 
 test(
-    equal,
-    '-   [github]\n-   [overwrite][twitter]\n\n[github]: https://github.com/ben-eb\n[twitter]: https://twitter.com/wooorm\n',
-    '-   [github]\n-   [overwrite][twitter]\n\n[github]: https://github.com/ben-eb\n\n[twitter]: https://twitter.com/ben_eb\n',
-    {bookmarks: {twitter: `https://twitter.com/ben_eb`}, overwrite: true}
-);
+  '#10',
+  equal,
+  '-   [github]\n-   [overwrite][twitter]\n\n[github]: https://github.com/ben-eb\n[twitter]: https://twitter.com/wooorm\n',
+  '-   [github]\n-   [overwrite][twitter]\n\n[github]: https://github.com/ben-eb\n\n[twitter]: https://twitter.com/ben_eb\n',
+  {bookmarks: {twitter: `https://twitter.com/ben_eb`}, overwrite: true}
+)
 
 test(
-    equal,
-    '[github]: https://github.com/ben-eb\n\n[github link].\n',
-    '[github]: https://github.com/ben-eb\n\n[github link].\n',
-    {bookmarks: {twitter: `https://twitter.com/ben_eb`}, overwrite: true}
-);
+  '#11',
+  equal,
+  '[github]: https://github.com/ben-eb\n\n[github link].\n',
+  '[github]: https://github.com/ben-eb\n\n[github link].\n',
+  {bookmarks: {twitter: `https://twitter.com/ben_eb`}, overwrite: true}
+)

@@ -1,49 +1,48 @@
-import remove from 'unist-util-remove';
-import visit from 'unist-util-visit';
-import u from 'unist-builder';
+import remove from 'unist-util-remove'
+import visit from 'unist-util-visit'
 
-function noop() {}
+const defaults = {bookmarks: {}, overwrite: false}
 
-function attacher(opts) {
-    opts = Object.assign(
-        {},
-        {
-            bookmarks: {},
-            overwrite: false,
-        },
-        opts
-    );
-    const {overwrite} = opts;
-    // All reference links should be case-insensitive.
-    const bookmarks = Object.keys(opts.bookmarks).reduce((list, key) => {
-        list[key.toLowerCase()] = opts.bookmarks[key];
-        return list;
-    }, {});
-    const bookmarkKeys = Object.keys(bookmarks);
-    if (bookmarkKeys.length < 1) {
-        return noop;
-    }
-    return ast => {
-        const linkReferences = {};
-        visit(ast, node => {
-            const {type, identifier} = node;
-            if (type === 'linkReference') {
-                linkReferences[identifier] = true;
-            } else if (type === 'definition') {
-                if (overwrite && bookmarkKeys.indexOf(identifier) > -1) {
-                    remove(ast, node);
-                } else if (linkReferences[identifier]) {
-                    linkReferences[identifier] = node;
-                }
-            }
-        });
-        bookmarkKeys.forEach(key => {
-            const url = bookmarks[key];
-            if (linkReferences[key] === true) {
-                ast.children.push(u('definition', {url, identifier: key}, key));
-            }
-        });
-    };
+export default function bookmarks(opts) {
+  const {overwrite, bookmarks} = Object.assign({}, defaults, opts)
+
+  // All reference links should be case-insensitive.
+  const associations = Object.keys(bookmarks).reduce((map, label) => {
+    map[label.toLowerCase()] = {label, url: bookmarks[label]}
+    return map
+  }, {})
+
+  const identifiers = Object.keys(associations)
+
+  if (identifiers.length === 0) {
+    return noop
+  }
+
+  return ast => {
+    const linkReferences = {}
+
+    visit(ast, node => {
+      const {type, identifier} = node
+
+      if (type === 'linkReference') {
+        linkReferences[identifier] = true
+      } else if (type === 'definition') {
+        if (overwrite && identifiers.indexOf(identifier) > -1) {
+          remove(ast, node)
+        } else if (linkReferences[identifier]) {
+          linkReferences[identifier] = node
+        }
+      }
+    })
+
+    identifiers.forEach(identifier => {
+      const {url, label} = associations[identifier]
+
+      if (linkReferences[identifier] === true) {
+        ast.children.push({type: 'definition', url, identifier, label})
+      }
+    })
+  }
 }
 
-export default attacher;
+function noop() {}
