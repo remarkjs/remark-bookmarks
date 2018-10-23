@@ -163,4 +163,4 @@ Contributions of any kind are welcome!
 
 [23]: https://github.com/kentcdodds/all-contributors
 
-[24]: http://www.opensource.org/licenses/MIT
+[24]: license

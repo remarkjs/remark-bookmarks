@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "files": [
     "dist",
-    "LICENSE-MIT"
+    "license"
   ],
   "scripts": {
     "format": "remark . -qfo && prettier \"**/*.js\" --write && xo --fix",
