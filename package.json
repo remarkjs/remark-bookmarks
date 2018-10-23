@@ -42,6 +42,7 @@
     "remark-heading-gap": "^3.0.0",
     "remark-inline-links": "^3.0.3",
     "remark-license": "^5.0.0",
+    "remark-preset-wooorm": "^4.0.0",
     "remark-reference-links": "^4.0.0",
     "remark-toc": "^5.0.0",
     "remark-usage": "^6.1.2",
@@ -88,6 +89,12 @@
   },
   "remarkConfig": {
     "plugins": [
+      "preset-wooorm",
+      [
+        "lint-maximum-line-length",
+        false
+      ],
+      "usage",
       [
         ".",
         {
@@ -100,22 +107,9 @@
           }
         }
       ],
-      [
-        "toc",
-        {
-          "maxDepth": 3
-        }
-      ],
-      "usage",
       "inline-links",
       "license",
-      "heading-gap",
       "reference-links"
-    ],
-    "settings": {
-      "bullet": "*",
-      "fences": true,
-      "listItemIndent": "1"
-    }
+    ]
   }
 }

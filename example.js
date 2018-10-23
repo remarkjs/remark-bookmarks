@@ -1,5 +1,4 @@
-// This module allows you to manage a collection of links across Markdown files; it's useful for use cases where you need to reference the same source several times across multiple sections of your documentation.
-// Given the following markdown:
+// This module allows you to manage a collection of links across Markdown files; it’s useful for use cases where you need to reference the same source several times across multiple sections of your documentation.  Given the following markdown:
 console.log('markdown', 'remark-bookmarks is on [npm]!')
 
 // And we require dependencies:
@@ -17,5 +16,6 @@ const output = remark()
   .processSync('remark-bookmarks is on [npm]!')
   .toString()
 
-// The output of this transform is below. Note that only the npm link is inserted into this document, to avoid unnecessary references.
+// The output of this transform is below.
+// Note that only the npm link is inserted into this document, to avoid unnecessary references.
 console.log('markdown', output)
