@@ -49,11 +49,11 @@
   },
   "scripts": {
     "prepublishOnly": "npm run build",
-    "format": "remark *.md -qfo && prettier \"**/*.js\" --write && xo --fix",
     "build": "babel src --out-dir dist --ignore src/**/*.test.js",
+    "format": "remark *.md -qfo && prettier \"**/*.js\" --write && xo --fix",
     "test-api": "ava",
     "test-coverage": "nyc --reporter lcov ava",
-    "test": "npm run format && npm run build && npm run test-coverage"
+    "test": "npm run build && npm run format && npm run test-coverage"
   },
   "browserslist": "> 2.5%, node 6",
   "babel": {
