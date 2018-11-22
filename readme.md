@@ -1,10 +1,17 @@
-# remark-bookmarks [![Build][2]][1] [![Coverage][4]][3] [![Chat][6]][5]
+# remark-bookmarks
 
-Link manager for Markdown files with [remark][7].
+[![Build][2]][1]
+[![Coverage][4]][3]
+[![Downloads][6]][5]
+[![Chat][8]][7]
+[![Sponsors][10]][9]
+[![Backers][11]][9]
+
+Link manager for Markdown files with [remark][12].
 
 ## Installation
 
-[npm][8]:
+[npm][13]:
 
 ```bash
 npm install remark-bookmarks
@@ -58,9 +65,9 @@ Manage links.
 By default, this module will append all of the references to the bottom of the
 Markdown file, which might be problematic if you are using modules that change
 whole sections of Markdown.
-One such example is [`remark-license`][9].
+One such example is [`remark-license`][14].
 
-To resolve this, we recommend that you use [`remark-inline-links`][10], which
+To resolve this, we recommend that you use [`remark-inline-links`][15], which
 will transform the references into inline links.
 
 ###### `options.bookmarks`
@@ -76,27 +83,27 @@ over anything defined globally.
 
 ## Related
 
-*   [`remark-inline-links`][10]
+*   [`remark-inline-links`][15]
     — Transform references and definitions into normal links and images
-*   [`remark-defsplit`][11]
+*   [`remark-defsplit`][16]
     — Transform links and images into references and definitions with
     URI-based identifiers
-*   [`remark-reference-links`][12]
+*   [`remark-reference-links`][17]
     — Transform links and images into references and definitions
-*   [`remark-unlink`][13]
+*   [`remark-unlink`][18]
     — Remove all links, references and definitions
 
 ## Contribute
 
-See [`contributing.md` in `remarkjs/remark`][14] for ways to get
+See [`contributing.md` in `remarkjs/remark`][19] for ways to get
 started.
 
-This organisation has a [Code of Conduct][15].  By interacting with this
+This organisation has a [Code of Conduct][20].  By interacting with this
 repository, organisation, or community you agree to abide by its terms.
 
 ## License
 
-[MIT][16] © [Ben Briggs][17]
+[MIT][21] © [Ben Briggs][22]
 
 [1]: https://travis-ci.org/remarkjs/remark-bookmarks
 
@@ -106,28 +113,38 @@ repository, organisation, or community you agree to abide by its terms.
 
 [4]: https://img.shields.io/codecov/c/github/remarkjs/remark-bookmarks.svg
 
-[5]: https://gitter.im/remarkjs/Lobby
+[5]: https://www.npmjs.com/package/remark-bookmarks
 
-[6]: https://img.shields.io/gitter/room/remarkjs/Lobby.svg
+[6]: https://img.shields.io/npm/dm/remark-bookmarks.svg
 
-[7]: https://github.com/remarkjs/remark
+[7]: https://spectrum.chat/unified/remark
 
-[8]: https://docs.npmjs.com/cli/install
+[8]: https://img.shields.io/badge/join%20the%20community-on%20spectrum-7b16ff.svg
 
-[9]: https://github.com/remarkjs/remark-license
+[9]: https://opencollective.com/unified
 
-[10]: https://github.com/remarkjs/remark-inline-links
+[10]: https://opencollective.com/unified/sponsors/badge.svg
 
-[11]: https://github.com/remarkjs/remark-defsplit
+[11]: https://opencollective.com/unified/backers/badge.svg
 
-[12]: https://github.com/remarkjs/remark-reference-links
+[12]: https://github.com/remarkjs/remark
 
-[13]: https://github.com/remarkjs/remark-unlink
+[13]: https://docs.npmjs.com/cli/install
 
-[14]: https://github.com/remarkjs/remark/blob/master/contributing.md
+[14]: https://github.com/remarkjs/remark-license
 
-[15]: https://github.com/remarkjs/remark/blob/master/code-of-conduct.md
+[15]: https://github.com/remarkjs/remark-inline-links
 
-[16]: license
+[16]: https://github.com/remarkjs/remark-defsplit
 
-[17]: http://beneb.info
+[17]: https://github.com/remarkjs/remark-reference-links
+
+[18]: https://github.com/remarkjs/remark-unlink
+
+[19]: https://github.com/remarkjs/remark/blob/master/contributing.md
+
+[20]: https://github.com/remarkjs/remark/blob/master/code-of-conduct.md
+
+[21]: license
+
+[22]: http://beneb.info
