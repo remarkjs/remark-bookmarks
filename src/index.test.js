@@ -83,3 +83,11 @@ test(
   '[github]: https://github.com/ben-eb\n\n[github link].\n',
   {bookmarks: {twitter: `https://twitter.com/ben_eb`}, overwrite: true}
 )
+
+test(
+  '#12',
+  equal,
+  '![image][image-alias]\n',
+  '![image][image-alias]\n\n[image-alias]: https://twitter.com/image\n',
+  {bookmarks: {'image-alias': `https://twitter.com/image`}}
+)

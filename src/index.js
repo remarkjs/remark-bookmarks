@@ -19,18 +19,17 @@ export default function bookmarks(opts) {
   }
 
   return ast => {
-    const linkReferences = {}
+    const references = {}
 
     visit(ast, node => {
       const {type, identifier} = node
-
-      if (type === 'linkReference') {
-        linkReferences[identifier] = true
+      if (type === 'linkReference' || type === 'imageReference') {
+        references[identifier] = true
       } else if (type === 'definition') {
         if (overwrite && identifiers.indexOf(identifier) > -1) {
           remove(ast, node)
-        } else if (linkReferences[identifier]) {
-          linkReferences[identifier] = node
+        } else if (references[identifier]) {
+          references[identifier] = node
         }
       }
     })
@@ -38,7 +37,7 @@ export default function bookmarks(opts) {
     identifiers.forEach(identifier => {
       const {url, label} = associations[identifier]
 
-      if (linkReferences[identifier] === true) {
+      if (references[identifier] === true) {
         ast.children.push({type: 'definition', url, identifier, label})
       }
     })
