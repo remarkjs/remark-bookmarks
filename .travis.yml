@@ -3,3 +3,13 @@ node_js:
   - lts/dubnium
   - node
 after_script: bash <(curl -s https://codecov.io/bash)
+deploy:
+  provider: releases
+  skip_cleanup: true
+  api_key:
+    secure: Wi6KQ8LJ5/Mg/qoO/mSHfO8PBua3suIH2GCvGqD3lIu5M07lKqK7BNnpx59I9AcA8ZuBOltiLHyGFdNHRYDT5WU2GOLcuaPfR+fKlOWyYgQJBc12+fsoRGQUnA7li3cpw2x3hs89Qd7HLeNnkreIKYvEO/BCyWd5EV9lSj70GHs6YpoBCugYzTNJoLPTMKwJO00b6bBkM3gDIwwn2xVCj/x3/B4Z3DsBTVkwNtAP5OU5QZFkBMqi35IoLeOjSx91KpEDwjxE8bHKTaYNcf9pR2IRyToRBdGBlK5QtJBVdxR4E8OAiBrTNazkg0pNOXLOT/8rs+mtFdRGMWimUxWVoTLAbGLIpttKpiPrC8BZDYn8y2LUhlYjwRwOEVq9Q21tLGCOgtFSoPvAnb0pP39KkH2i/VC1DiksiBHeIBTKRrqd7lEViuEQh4Ar6g+kE5BSxqhXK4qfIrZkNyApSJLdP6rmuVBNwHd8Jkavsc0hEtxHgKVarhVRu+MKv61R64MyjySwqopmc8ZWnvuiqNw/2roYbVyTU3gmbD+omlJtbdcKA7ncNMKiLd1vg4+JHYXtJqY2z23FSb0ArKiLiw81GcDUuZh6XkKtEx5P8Sgdgs0OB++f1yn/raow3rTdVmgj8wkogQf5AHiy+inU5nJ/eLIZtBJwo2WKdb2zDzEYDAo=
+  file:
+    - 'remark-bookmarks.js'
+    - 'remark-bookmarks.min.js'
+  on:
+    tags: true

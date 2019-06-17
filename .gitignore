@@ -4,4 +4,6 @@
 coverage/
 dist/
 node_modules/
+remark-bookmarks.js
+remark-bookmarks.min.js
 yarn.lock
