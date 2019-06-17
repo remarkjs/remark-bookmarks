@@ -1,20 +1,25 @@
 {
   "name": "remark-bookmarks",
   "version": "2.1.0",
-  "description": "A link manager for Markdown files.",
+  "description": "remark plugin to manage links",
   "license": "MIT",
   "keywords": [
-    "global",
-    "links",
+    "unified",
+    "remark",
+    "plugin",
+    "mdast",
     "markdown",
-    "remark"
+    "global",
+    "links"
   ],
   "repository": "remarkjs/remark-bookmarks",
   "bugs": "https://github.com/remarkjs/remark-bookmarks/issues",
   "author": "Ben Briggs <beneb.info@gmail.com> (http://beneb.info)",
   "contributors": [
     "Ben Briggs <beneb.info@gmail.com> (http://beneb.info)",
-    "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)"
+    "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)",
+    "Aleksandr Grenishin <nd0ut.me@gmail.com>",
+    "Merlijn Vos <merlijn@soverin.net>"
   ],
   "main": "dist/index.js",
   "module": "src/index.js",
