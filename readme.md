@@ -1,74 +1,66 @@
 # remark-bookmarks
 
-[![Build][2]][1]
-[![Coverage][4]][3]
-[![Downloads][6]][5]
-[![Chat][8]][7]
-[![Sponsors][10]][9]
-[![Backers][11]][9]
+[![Build][build-badge]][build]
+[![Coverage][coverage-badge]][coverage]
+[![Downloads][downloads-badge]][downloads]
+[![Size][size-badge]][size]
+[![Sponsors][sponsors-badge]][collective]
+[![Backers][backers-badge]][collective]
+[![Chat][chat-badge]][chat]
 
-Link manager for Markdown files with [remark][12].
+[**remark**][remark] plugin to manage links.
 
-## Installation
+## Install
 
-[npm][13]:
+[npm][]:
 
-```bash
+```sh
 npm install remark-bookmarks
 ```
 
-## Usage
+## Use
 
-This module allows you to manage a collection of links across Markdown files; it’s useful for use cases where you need to reference the same source several times across multiple sections of your documentation.  Given the following markdown:
+Say we have the following file, `example.md`:
 
 ```markdown
-remark-bookmarks is on [npm]!
+`remark-bookmarks` is on [npm][]!
 ```
 
-And we require dependencies:
+And our script, `example.js`, looks as follows:
 
-```javascript
+```js
+const vfile = require('to-vfile')
 const remark = require('remark')
-const remarkBookmarks = require('remark-bookmarks')
-```
+const bookmarks = require('remark-bookmarks')
 
-We can call remark-bookmarks to provide the missing reference:
-
-```javascript
-const output = remark()
-  .use(remarkBookmarks, {
+remark()
+  .use(bookmarks, {
     bookmarks: {
       github: 'https://github.com/remarkjs/remark-bookmarks',
       npm: 'https://npmjs.com/package/remark-bookmarks'
     }
   })
-  .processSync('remark-bookmarks is on [npm]!')
-  .toString()
+  .process(vfile.readSync('example.md'), function(err, file) {
+    if (err) throw err
+    console.log(String(file))
+  })
 ```
 
-The output of this transform is below.
-
-Note that only the npm link is inserted into this document, to avoid unnecessary references.
+Now, running `node example` yields:
 
 ```markdown
-remark-bookmarks is on [npm]!
+`remark-bookmarks` is on [npm][]!
 
 [npm]: https://npmjs.com/package/remark-bookmarks
 ```
 
 ## API
 
-### `remark.use(bookmarks[, options])`
+### `remark().use(bookmarks[, options])`
 
 Manage links.
 
-By default, this module will append all of the references to the bottom of the
-Markdown file, which might be problematic if you are using modules that change
-whole sections of Markdown.
-One such example is [`remark-license`][14].
-
-To resolve this, we recommend that you use [`remark-inline-links`][15], which
-will transform the references into inline links.
+##### `options`
 
 ###### `options.bookmarks`
 
@@ -83,68 +75,70 @@ over anything defined globally.
 
 ## Related
 
-*   [`remark-inline-links`][15]
+*   [`remark-inline-links`](https://github.com/remarkjs/remark-inline-links)
     — Transform references and definitions into normal links and images
-*   [`remark-defsplit`][16]
+*   [`remark-defsplit`](https://github.com/remarkjs/remark-defsplit)
     — Transform links and images into references and definitions with
     URI-based identifiers
-*   [`remark-reference-links`][17]
+*   [`remark-reference-links`](https://github.com/remarkjs/remark-reference-links)
     — Transform links and images into references and definitions
-*   [`remark-unlink`][18]
+*   [`remark-unlink`](https://github.com/remarkjs/remark-unlink)
     — Remove all links, references and definitions
 
 ## Contribute
 
-See [`contributing.md` in `remarkjs/remark`][19] for ways to get
-started.
+See [`contributing.md`][contributing] in [`remarkjs/.github`][health] for ways
+to get started.
+See [`support.md`][support] for ways to get help.
 
-This organisation has a [Code of Conduct][20].  By interacting with this
-repository, organisation, or community you agree to abide by its terms.
+This project has a [Code of Conduct][coc].
+By interacting with this repository, organisation, or community you agree to
+abide by its terms.
 
 ## License
 
-[MIT][21] © [Ben Briggs][22]
+[MIT][license] © [Ben Briggs][author]
 
-[1]: https://travis-ci.org/remarkjs/remark-bookmarks
+<!-- Definitions -->
 
-[2]: https://img.shields.io/travis/remarkjs/remark-bookmarks.svg
+[build-badge]: https://img.shields.io/travis/remarkjs/remark-bookmarks/master.svg
 
-[3]: https://codecov.io/github/remarkjs/remark-bookmarks
+[build]: https://travis-ci.org/remarkjs/remark-bookmarks
 
-[4]: https://img.shields.io/codecov/c/github/remarkjs/remark-bookmarks.svg
+[coverage-badge]: https://img.shields.io/codecov/c/github/remarkjs/remark-bookmarks.svg
 
-[5]: https://www.npmjs.com/package/remark-bookmarks
+[coverage]: https://codecov.io/github/remarkjs/remark-bookmarks
 
-[6]: https://img.shields.io/npm/dm/remark-bookmarks.svg
+[downloads-badge]: https://img.shields.io/npm/dm/remark-bookmarks.svg
 
-[7]: https://spectrum.chat/unified/remark
+[downloads]: https://www.npmjs.com/package/remark-bookmarks
 
-[8]: https://img.shields.io/badge/join%20the%20community-on%20spectrum-7b16ff.svg
+[size-badge]: https://img.shields.io/bundlephobia/minzip/remark-bookmarks.svg
 
-[9]: https://opencollective.com/unified
+[size]: https://bundlephobia.com/result?p=remark-bookmarks
 
-[10]: https://opencollective.com/unified/sponsors/badge.svg
+[sponsors-badge]: https://opencollective.com/unified/sponsors/badge.svg
 
-[11]: https://opencollective.com/unified/backers/badge.svg
+[backers-badge]: https://opencollective.com/unified/backers/badge.svg
 
-[12]: https://github.com/remarkjs/remark
+[collective]: https://opencollective.com/unified
 
-[13]: https://docs.npmjs.com/cli/install
+[chat-badge]: https://img.shields.io/badge/join%20the%20community-on%20spectrum-7b16ff.svg
 
-[14]: https://github.com/remarkjs/remark-license
+[chat]: https://spectrum.chat/unified/remark
 
-[15]: https://github.com/remarkjs/remark-inline-links
+[npm]: https://docs.npmjs.com/cli/install
 
-[16]: https://github.com/remarkjs/remark-defsplit
+[health]: https://github.com/remarkjs/.github
 
-[17]: https://github.com/remarkjs/remark-reference-links
+[contributing]: https://github.com/remarkjs/.github/blob/master/contributing.md
 
-[18]: https://github.com/remarkjs/remark-unlink
+[support]: https://github.com/remarkjs/.github/blob/master/support.md
 
-[19]: https://github.com/remarkjs/remark/blob/master/contributing.md
+[coc]: https://github.com/remarkjs/.github/blob/master/code-of-conduct.md
 
-[20]: https://github.com/remarkjs/remark/blob/master/code-of-conduct.md
+[license]: license
 
-[21]: license
+[author]: http://beneb.info
 
-[22]: http://beneb.info
+[remark]: https://github.com/remarkjs/remark

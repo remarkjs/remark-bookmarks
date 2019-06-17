@@ -44,11 +44,7 @@
     "prettier": "^1.0.0",
     "remark": "^10.0.0",
     "remark-cli": "^6.0.0",
-    "remark-inline-links": "^3.0.0",
-    "remark-license": "^5.0.0",
     "remark-preset-wooorm": "^5.0.0",
-    "remark-reference-links": "^4.0.0",
-    "remark-usage": "^6.0.0",
     "tinyify": "^2.0.0",
     "xo": "^0.24.0"
   },
@@ -96,15 +92,7 @@
   },
   "remarkConfig": {
     "plugins": [
-      "preset-wooorm",
-      [
-        "lint-maximum-line-length",
-        false
-      ],
-      "usage",
-      "inline-links",
-      "license",
-      "reference-links"
+      "preset-wooorm"
     ]
   }
 }
