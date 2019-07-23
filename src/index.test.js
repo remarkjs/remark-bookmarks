@@ -91,3 +91,23 @@ test(
   '![image][image-alias]\n\n[image-alias]: https://twitter.com/image\n',
   {bookmarks: {'image-alias': `https://twitter.com/image`}}
 )
+
+test(
+  '#13',
+  equal,
+  '[proto][toString]\n',
+  '[proto][toString]\n\n[toString]: https://example.com\n',
+  {bookmarks: {toString: `https://example.com`}}
+)
+
+test('#14', equal, '[proto][toString]\n', '[proto][toString]\n', {
+  bookmarks: {constructor: `https://example.com`}
+})
+
+test(
+  '#15',
+  equal,
+  '[proto][__proto__]\n',
+  '[proto][__proto__]\n\n[__PROTO__]: https://example.com\n',
+  {bookmarks: {__PROTO__: `https://example.com`}}
+)
