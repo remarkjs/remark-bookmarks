@@ -73,6 +73,16 @@ Pass `overwrite: true` to ensure that references are used consistently.
 By default (`false`), the existing references in the file will take precedence
 over anything defined globally.
 
+## Security
+
+`options.bookmarks` is used and injected into the tree as definitions when the
+content references them.
+This could open you up to a [cross-site scripting (XSS)][xss] attack if you pass
+user provided content as bookmarks.
+
+This may become a problem if the Markdown later transformed to
+[**rehype**][rehype] ([**hast**][hast]) or opened in an unsafe Markdown viewer.
+
 ## Related
 
 *   [`remark-inline-links`](https://github.com/remarkjs/remark-inline-links)
@@ -142,3 +152,9 @@ abide by its terms.
 [author]: http://beneb.info
 
 [remark]: https://github.com/remarkjs/remark
+
+[xss]: https://en.wikipedia.org/wiki/Cross-site_scripting
+
+[rehype]: https://github.com/rehypejs/rehype
+
+[hast]: https://github.com/syntax-tree/hast
