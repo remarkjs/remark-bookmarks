@@ -1,4 +1,3 @@
-import remove from 'unist-util-remove'
 import visit from 'unist-util-visit'
 import collapse from 'collapse-white-space'
 
@@ -22,7 +21,7 @@ export default function bookmarks(opts) {
   return ast => {
     const references = {}
 
-    visit(ast, node => {
+    visit(ast, (node, index, parent) => {
       const {type, identifier} = node
       const normal = collapse(identifier).toUpperCase()
 
@@ -30,8 +29,11 @@ export default function bookmarks(opts) {
         references[normal] = true
       } else if (type === 'definition') {
         if (overwrite && identifiers.indexOf(normal) !== -1) {
-          remove(ast, node)
-        } else if (references[normal]) {
+          parent.children.splice(index, 1)
+          return index
+        }
+
+        if (references[normal]) {
           references[normal] = node
         }
       }

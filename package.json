@@ -29,7 +29,6 @@
   ],
   "dependencies": {
     "collapse-white-space": "^1.0.5",
-    "unist-util-remove": "^1.0.0",
     "unist-util-visit": "^1.1.1"
   },
   "devDependencies": {
