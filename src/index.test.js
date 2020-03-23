@@ -3,9 +3,7 @@ import remark from 'remark'
 import bookmarks from '.'
 
 function equal(t, fixture, expected, options) {
-  const output = remark()
-    .use(bookmarks, options)
-    .processSync(fixture)
+  const output = remark().use(bookmarks, options).processSync(fixture)
   t.deepEqual(expected, output.contents)
 }
 

@@ -3,8 +3,8 @@ import collapse from 'collapse-white-space'
 
 const defaults = {bookmarks: {}, overwrite: false}
 
-export default function bookmarks(opts) {
-  const {overwrite, bookmarks} = Object.assign({}, defaults, opts)
+export default function bookmarks(options) {
+  const {overwrite, bookmarks} = Object.assign({}, defaults, options)
 
   // All reference links should be case-insensitive.
   const associations = Object.keys(bookmarks).reduce((map, label) => {
@@ -18,7 +18,7 @@ export default function bookmarks(opts) {
     return noop
   }
 
-  return ast => {
+  return (ast) => {
     const references = {}
 
     visit(ast, (node, index, parent) => {
@@ -28,7 +28,7 @@ export default function bookmarks(opts) {
       if (type === 'linkReference' || type === 'imageReference') {
         references[normal] = true
       } else if (type === 'definition') {
-        if (overwrite && identifiers.indexOf(normal) !== -1) {
+        if (overwrite && identifiers.includes(normal)) {
           parent.children.splice(index, 1)
           return index
         }
@@ -39,7 +39,7 @@ export default function bookmarks(opts) {
       }
     })
 
-    identifiers.forEach(identifier => {
+    identifiers.forEach((identifier) => {
       const normal = collapse(identifier).toUpperCase()
       const {url, label} = associations[normal]
 
