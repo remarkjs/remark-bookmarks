@@ -2,3 +2,5 @@ coverage/
 dist/
 remark-bookmarks.js
 remark-bookmarks.min.js
+*.json
+*.md

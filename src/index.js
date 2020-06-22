@@ -7,10 +7,10 @@ export default function bookmarks(options) {
   const {overwrite, bookmarks} = Object.assign({}, defaults, options)
 
   // All reference links should be case-insensitive.
-  const associations = Object.keys(bookmarks).reduce((map, label) => {
-    map[collapse(label).toUpperCase()] = {label, url: bookmarks[label]}
-    return map
-  }, {})
+  const associations = {}
+  Object.keys(bookmarks).forEach((label) => {
+    associations[collapse(label).toUpperCase()] = {label, url: bookmarks[label]}
+  })
 
   const identifiers = Object.keys(associations)
 

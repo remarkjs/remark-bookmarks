@@ -47,15 +47,15 @@
     "browserify": "^16.0.0",
     "nyc": "^15.0.0",
     "prettier": "^2.0.0",
-    "remark": "^11.0.0",
-    "remark-cli": "^7.0.0",
-    "remark-preset-wooorm": "^6.0.0",
+    "remark": "^12.0.0",
+    "remark-cli": "^8.0.0",
+    "remark-preset-wooorm": "^7.0.0",
     "tinyify": "^2.0.0",
-    "xo": "^0.28.0"
+    "xo": "^0.32.0"
   },
   "scripts": {
     "prepublishOnly": "npm run compile",
-    "format": "remark . -qfo && prettier \"**/*.js\" --write && xo --fix",
+    "format": "remark . -qfo && prettier . --write && xo --fix",
     "compile": "babel src --out-dir dist --ignore src/**/*.test.js",
     "build-bundle": "browserify . -s remarkBookmarks -o remark-bookmarks.js",
     "build-mangle": "browserify . -s remarkBookmarks -p tinyify -o remark-bookmarks.min.js",
