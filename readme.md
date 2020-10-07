@@ -10,6 +10,14 @@
 
 [**remark**][remark] plugin to manage links.
 
+## Archived
+
+This project is now archived.
+A new parser in remark happened, which is 100% compliant to CommonMark.
+Which means the things this plugin used are no longer available.
+Rewriting this plugin would be a lot of work, and while it’s a fun idea, this
+plugin wasn’t used much, and hence I am instead archiving it.
+
 ## Install
 
 [npm][]:
